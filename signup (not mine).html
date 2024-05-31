@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up - Stem Cell Therapy</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="AM Dellosa">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Stem Cell Therapy: Using stem cells to treat diseases and injuries.">  
+    </head>
+    <body>
+        <!-- Logo and text-->
+        <header>
+            <a href="index.html">
+                <img class="logo" src="content/logo.png">
+            </a>
+        </header>
+        <!-- Navigation bar to help the user to navigate around the website. -->
+        <nav>
+            <ul>
+                <!-- Navigation Buttons -->
+                <li class="navButton"> 
+                    <a class="btn" href="index.html">Home</a> 
+                </li>
+                <li class="navButton">
+                    <a class="btn" href="about.html">About</a>
+                </li>
+                <li class="navButton">
+                    <a class="btn" href="risks.html">Risks</a>
+                </li>
+                <li class="navButton">
+                    <a class="btn" href="login.html">Login</a>
+                </li>
+                <li class="navButton">
+                    <a class="currentBtn" href="signup.html">Sign Up</a> <!-- currentBtn changes the color of the current button page to blue. -->
+                </li>
+            </ul>
+            <!-- Greets the user as guest -->
+            <p id="greet">Hello, guest!</p>
+        </nav>
+        <!-- Section for background video and some text -->
+        <section class="opacity"> <!-- opacity class is for its animation when the page loads -->
+            <video class="bgVid" src="content/bgVid2.mp4" autoplay loop muted></video>
+            <p class="text1">Get Ready for Greatness</p>
+            <p class="text2">Sign Up Now</p>
+        </section>
+        <!-- Section for sign up form -->
+        <section>
+            <div class="container opacity">
+                <div class="container2">
+                    <form>
+                        <fieldset>
+                            <legend class="t1">Sign Up</legend>
+                            <div class="inputHere">
+                                <input class="inputText" type="text" placeholder="Name" id="name" onfocus="oF1()" onblur="oB1()" required>
+                            </div>
+                            <div class="inputHere">
+                                <select class="gender" placeholder="Gender" id="gender" autocomplete="off" onfocus="oF2()" onblur="oB2()" required>
+                                    <option value="gender">Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Prefer not to mention">Prefer not to mention</option>
+                                </select>
+                            </div>
+                            <div class="inputHere">
+                                <input class="inputText" type="text" placeholder="Username" id="uName" onfocus="oF3()" onblur="oB3()" required>
+                            </div>
+                            <div class="inputHere">
+                                <input class="inputText" type="password" placeholder="Password" id="pass1" onfocus="oF4()" onblur="oB4()" required>
+                            </div>
+                            <div class="inputHere">
+                                <input class="inputText" type="password" placeholder="Confirm Password" id="pass2" onfocus="oF5()" onblur="oB5()" required>
+                            </div>
+                            <div class="inputHere">
+                                <input class="inputText" type="email" placeholder="Email" id="email" onfocus="oF6()" onblur="oB6()" required>
+                            </div>
+                            <div class="inputHere">
+                                <input class="inputText" type="text" placeholder="Address" id="address" onfocus="oF7()" onblur="oB7()" required>
+                            </div>
+                            <div class="inputHere">
+                                <textarea rows="4" cols="500" placeholder="Your interests" id="interests" onfocus="oF8()" onblur="oB8()" required></textarea>
+                            </div>
+                            <input class="button" type="button" onclick="change()" value="Reset">
+                            <input class="button" type="button" onclick="enter()" value="Submit form">
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </section>
+        <!-- Announcements for the form -->
+        <div class="cover" id="coverAnnouncement">
+            <div class="announcement" id="announcement">
+                <p>Success! You have made an account.</p>
+                <button onclick="login()">LOGIN</button>
+                <button onclick="closeAnnouncement()">OK</button>
+            </div>
+        </div>
+        <div class="cover2" id="coverAnnouncement2">
+            <div class="announcement2" id="announcement2">
+                <p>ERROR! Try again.</p>
+                <button onclick="closeAnnouncement2()">OK</button>
+            </div>
+        </div>
+    </body>
+    <style>
+        /* Importing fonts */
+        @import url(https://db.onlinewebfonts.com/c/0a086e32e41c5e5960b26626757f07f3?family=Apercu+Regular);
+        @import url(https://db.onlinewebfonts.com/c/961a181da27e7cbc072ec2fb5bbfe2a9?family=Circular+Std+Bold);
+        @import url(https://db.onlinewebfonts.com/c/f063b4c9d32afc2a4ec1faf2d88d634c?family=a+Bold);
+        @import url('https://fonts.googleapis.com/css?family=Rubik:500');
+        @font-face {
+            font-family: "Apercu Regular";
+            src: url("https://db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.eot");
+            src: url("https://db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.eot?#iefix")format("embedded-opentype"),
+            url("https://db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.woff2")format("woff2"),
+            url("https://db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.woff")format("woff"),
+            url("https://db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.ttf")format("truetype"),
+            url("https://db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.svg#Apercu Regular")format("svg");
+        }
+        @font-face {
+            font-family: "Circular Std Bold";
+            src: url("https://db.onlinewebfonts.com/t/961a181da27e7cbc072ec2fb5bbfe2a9.eot");
+            src: url("https://db.onlinewebfonts.com/t/961a181da27e7cbc072ec2fb5bbfe2a9.eot?#iefix")format("embedded-opentype"),
+            url("https://db.onlinewebfonts.com/t/961a181da27e7cbc072ec2fb5bbfe2a9.woff2")format("woff2"),
+            url("https://db.onlinewebfonts.com/t/961a181da27e7cbc072ec2fb5bbfe2a9.woff")format("woff"),
+            url("https://db.onlinewebfonts.com/t/961a181da27e7cbc072ec2fb5bbfe2a9.ttf")format("truetype"),
+            url("https://db.onlinewebfonts.com/t/961a181da27e7cbc072ec2fb5bbfe2a9.svg#Circular Std Bold")format("svg");
+        }
+        @font-face {
+			font-family: "a Bold";
+			src: url("https://db.onlinewebfonts.com/t/f063b4c9d32afc2a4ec1faf2d88d634c.eot");
+			src: url("https://db.onlinewebfonts.com/t/f063b4c9d32afc2a4ec1faf2d88d634c.eot?#iefix")format("embedded-opentype"),
+			url("https://db.onlinewebfonts.com/t/f063b4c9d32afc2a4ec1faf2d88d634c.woff2")format("woff2"),
+			url("https://db.onlinewebfonts.com/t/f063b4c9d32afc2a4ec1faf2d88d634c.woff")format("woff"),
+			url("https://db.onlinewebfonts.com/t/f063b4c9d32afc2a4ec1faf2d88d634c.ttf")format("truetype"),
+			url("https://db.onlinewebfonts.com/t/f063b4c9d32afc2a4ec1faf2d88d634c.svg#a Bold")format("svg");
+		}
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .navButton {
+            font-family: Poppins, Open sans, Arial, sans-serif;
+            position: relative;
+            list-style-type:none;
+            float: left;
+            cursor: pointer;
+            font-size: 1.1vw;
+            top: 4vh;
+            left: 13vw;
+            transition: transform 0.2s;
+            margin-right: 1vw;
+        }       
+        .btn:link, .btn:visited, .btn:hover, .btn:active {
+            color: black;
+            text-decoration: none;
+        }
+        /* Changes the color of the current page button to blue */
+        .currentBtn:link, .currentBtn:visited, .currentBtn:hover, .currentBtn:active {
+            color: #38b6ff;
+            text-decoration: none;
+        }
+        /* Navbar css */
+        nav {
+            width: 100vw;
+            height: 10vh;
+            background-color: white;
+            overflow: hidden;
+        }
+        .logo {
+            height: 8vh;
+            position: absolute;
+            top: 1vh;
+            left: 0.5vw;
+        }
+        .bgVid {
+            position: fixed;
+            overflow: hidden;
+            width: 100vw;
+            right: 35vw;
+        }
+        /* Container CSS */
+        .container{
+            width: 35vw;
+            height: 90vh;
+            background-color: #38b6ff;
+            float: right;
+        }
+        /* Text CSS */
+        .text1 {
+            font-family: 'Rubik', sans-serif;
+            font-weight: bold;
+            font-size: 4vw;
+            width: 40vw;
+            text-align: center;
+            color: #ffffff;
+            left: 10.6vw;
+            position:  fixed;
+            top: 32.5vh;
+        }
+        .text2 {
+            font-family: 'Rubik', sans-serif;
+            font-weight: bold;
+            font-size: 4vw;
+            width: 40vw;
+            text-align: center;
+            color: #ffffff;
+            left: 10.6vw;
+            position:  fixed;
+            top: 60.5vh;
+        }
+		form {
+			height: 70vh;
+		}
+		fieldset {
+			border: 0;
+		}
+        /* Button CSS */
+		.button {
+			width: 10.9vw;
+			height: 5vh;
+			position: relative;
+			left: 2.92vh;
+			top: 9.5vh;
+			border: none;
+			outline: none;
+			background-color: rgb(196, 196, 196);
+			border: 0.5vh solid rgba(0, 0, 0, 0.671);
+			border-radius: 1vh;
+			font-family: "a Bold";
+			color: black;
+			font-size: 1.5vh;
+			margin: 0vh;
+		}
+		.button:hover {
+			cursor: pointer;
+			background-color: rgb(211, 211, 211);
+		}
+		.button:active {
+			background-color: rgb(190, 190, 190);
+		}
+        /* Input CSS */
+		.inputHere {
+			width: 25vw;
+			height: 6vh;
+			text-align: center;
+		}
+		.inputHere .inputText {
+			width: 20vw;
+			height: 3vh;
+			background: transparent;
+			border: none;
+			outline: none;
+			border: 0.5vh solid rgba(0, 0, 0, 0.671);
+			border-radius: 10vh;
+			font-family: "a Bold";
+			font-size: 1.5vh;
+			padding-left: 1.5vh;
+			padding-right: 1.5vh;
+		}
+		.inputHere .gender {
+			width: 22vw;
+			height: 3.75vh;
+			background: transparent;
+			border: none;
+			outline: none;
+			border: 0.5vh solid rgba(0, 0, 0, 0.671);
+			border-radius: 10vh;
+			font-family: "a Bold";
+			font-size: 1.5vh;
+            appearance: none;
+			padding-left: 1.5vh;
+			padding-right: 1vh;
+		}
+		.inputHere input::placeholder {
+			font-family: "a Bold";
+			font-size: 1.5vh;
+            color:black;
+		}
+        .inputHere textarea::placeholder{
+            color:black;
+        }
+		.inputHere textarea {
+			width: 20vw;
+			height: 10vh;
+			background: transparent;
+			border: none;
+			outline: none;
+			border: 0.5vh solid rgba(0, 0, 0, 0.671);
+			border-radius: 1vh;
+			font-family: "a Bold";
+			font-size: 1.5vh;
+			padding: 1.5vh;
+		}
+		.inputHere textarea::placeholder {
+			font-family: "a Bold";
+			font-size: 1.5vh;
+		}
+		textarea {
+  			resize: none;
+		}
+		.t1 {
+			text-align: center;
+			font-family: "a Bold";
+			font-size: 3.5vh;
+			padding-top: 1.2vh;
+			margin-bottom: 1vh;
+		}
+        /* Container 2 CSS */
+		.container2 {
+			width: 25vw;
+			height: 72vh;
+			background-color: white;
+			position: absolute;
+			top: 20vh;
+            right: 5vw;
+			border-radius: 2vw;
+			box-shadow: 2vh 2vh 2vh #3d8bb3;
+		}
+        /* Announcement CSS */
+        .cover, .cover2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .announcement, .announcement2 {
+            background: white;
+            padding: 2vh 4vw;
+            border-radius: 0.8vh;
+            box-shadow: 0 0 1vh rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: 'Rubik', sans-serif;
+            font-size: 1vw;
+            opacity: 0;
+            transform: translateY(-10vh);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+        .announcement.show, .announcement2.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .announcement button, .announcement2 button {
+            padding: 1vh 2vw;
+            margin-top: 2vh;
+            background-color: #38b6ff;
+            color: white;
+            border: none;
+            border-radius: 0.5vh;
+            cursor: pointer;
+            font-family: Open sans, Arial, sans-serif;
+        }
+        .announcement button:hover, .announcement2 button:hover {
+            background-color: #30a0e0;
+        }
+        /* Page animation */
+        .opacity {
+            opacity: 0;
+            animation: opacity 1s linear forwards;
+        }
+        @keyframes opacity{
+            100%{
+                opacity: 1;
+            }
+        }
+        #greet {
+            font-family: Poppins, Open sans, Arial, sans-serif;
+            position: relative;
+            float: right;
+            font-size: 1.1vw;
+            top: 4vh;
+            left: 13vw;
+            transition: transform 0.2s;
+            margin-right: 15.5vw;
+        } 
+    </style>
+    <script>
+        //Resets the form
+        function change() {
+			document.getElementById("name").value = "";
+			document.getElementById("gender").value = "gender";
+			document.getElementById("uName").value = "";
+			document.getElementById("pass1").value = "";
+			document.getElementById("pass2").value = "";
+			document.getElementById("email").value = "";
+			document.getElementById("address").value = "";
+			document.getElementById("interests").value = "";
+			document.getElementById("name").style.border = "0.5vh solid rgba(0, 0, 0, 0.671)";
+			document.getElementById("gender").style.border = "0.5vh solid rgba(0, 0, 0, 0.671)";
+			document.getElementById("uName").style.border = "0.5vh solid rgba(0, 0, 0, 0.671)";
+			document.getElementById("pass1").style.border = "0.5vh solid rgba(0, 0, 0, 0.671)";
+			document.getElementById("pass2").style.border = "0.5vh solid rgba(0, 0, 0, 0.671)";
+			document.getElementById("email").style.border = "0.5vh solid rgba(0, 0, 0, 0.671)";
+			document.getElementById("address").style.border = "0.5vh solid rgba(0, 0, 0, 0.671)";
+			document.getElementById("interests").style.border = "0.5vh solid rgba(0, 0, 0, 0.671)";
+		}
+        //Stores the user's data and signs them in if they gave the data correctly
+		function enter() {
+			let name = document.getElementById("name").value;
+			let gender = document.getElementById("gender").value;
+			let uName = document.getElementById("uName").value;
+			let pass1 = document.getElementById("pass1").value;
+			let pass2 = document.getElementById("pass2").value;
+			let email = document.getElementById("email").value;
+			let address = document.getElementById("address").value;
+			let interests = document.getElementById("interests").value;
+			if (name != "" && gender != "gender" && uName != "" && pass1 != "" && pass2 == pass1 && email != "" && document.getElementById("email").validity.valid && address != "" && interests != "") {
+                localStorage.setItem("username", uName);
+                localStorage.setItem("password", pass1);
+                console.log("success");
+                announcement();
+			} else {
+                announcement2();
+			}
+		}
+        //JS for onblur and onfocus
+		function oB1(){
+			var name = document.getElementById("name").value;
+			if (name == "") {
+				document.getElementById("name").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			} else {
+				document.getElementById("name").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			}
+		}
+		function oF1(){
+			var name = document.getElementById("name").value;
+			if (name != "") {
+				document.getElementById("name").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			} else {
+				document.getElementById("name").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			}
+		}
+		function oB2(){
+			var gender = document.getElementById("gender").value;
+			if (gender == "gender") {
+				document.getElementById("gender").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			} else {
+				document.getElementById("gender").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			}
+		}
+		function oF2(){
+			var gender = document.getElementById("gender").value;
+			if (gender != "gender") {
+				document.getElementById("gender").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			} else {
+				document.getElementById("gender").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			}
+		}
+		function oB3(){
+			var uName = document.getElementById("uName").value;
+			if (uName == "") {
+				document.getElementById("uName").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			} else {
+				document.getElementById("uName").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			}
+		}
+		function oF3(){
+			var uName = document.getElementById("uName").value;
+			if (uName != "") {
+				document.getElementById("uName").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			} else {
+				document.getElementById("uName").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			}
+		}
+		function oB4(){
+			var pass1 = document.getElementById("pass1").value;
+			if (pass1 == "") {
+				document.getElementById("pass1").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			} else {
+				document.getElementById("pass1").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			}
+			var pass2 = document.getElementById("pass2").value;
+			if (pass1 != pass2 || pass2 == "") {
+				document.getElementById("pass2").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			} else if (pass1 != "" && pass1 == pass2 && pass2 !="") {
+				document.getElementById("pass2").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			}
+		}
+		function oF4(){
+			var pass1 = document.getElementById("pass1").value;
+			if (pass1 != "") {
+				document.getElementById("pass1").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			} else {
+				document.getElementById("pass1").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			}
+			var pass2 = document.getElementById("pass2").value;
+			if (pass1 != "" && pass1 == pass2 && pass2 !="") {
+				document.getElementById("pass2").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			} else if (pass1 != pass2 || pass2 == "") {
+				document.getElementById("pass2").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			}
+		}
+		function oB5(){
+			var pass1 = document.getElementById("pass1").value;
+			var pass2 = document.getElementById("pass2").value;
+			if (pass1 != pass2 || pass2 == "") {
+				document.getElementById("pass2").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			} else if (pass1 != "" && pass1 == pass2 && pass2 !="") {
+				document.getElementById("pass2").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			}
+		}
+		function oF5(){
+			var pass1 = document.getElementById("pass1").value;
+			var pass2 = document.getElementById("pass2").value;
+			if (pass1 != "" && pass1 == pass2 && pass2 !="") {
+				document.getElementById("pass2").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			} else if (pass1 != pass2 || pass2 == "") {
+				document.getElementById("pass2").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			}
+		}
+		function oB6(){
+			var email = document.getElementById("email").value;
+			if (email == "" || document.getElementById("email").validity.valid == false) {
+				document.getElementById("email").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			} else if (email != "" && document.getElementById("email").validity.valid) {
+				document.getElementById("email").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			}
+		}
+		function oF6(){
+			var email = document.getElementById("email").value;
+			if (email != "" && document.getElementById("email").validity.valid) {
+				document.getElementById("email").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			} else if (email == "" || document.getElementById("email").validity.valid == false) {
+				document.getElementById("email").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			}
+		}
+		function oB7(){
+			var address = document.getElementById("address").value;
+			if (address == "") {
+				document.getElementById("address").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			} else {
+				document.getElementById("address").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			}
+		}
+		function oF7(){
+			var address = document.getElementById("address").value;
+			if (address != "") {
+				document.getElementById("address").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			} else {
+				document.getElementById("address").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			}
+		}
+		function oB8(){
+			var interests = document.getElementById("interests").value;
+			if (interests == "") {
+				document.getElementById("interests").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			} else {
+				document.getElementById("interests").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			}
+		}
+		function oF8(){
+			var interests = document.getElementById("interests").value;
+			if (interests != "") {
+				document.getElementById("interests").style.border = "0.5vh solid rgba(0, 255, 0, 0.66)";
+			} else {
+				document.getElementById("interests").style.border = "0.5vh solid rgba(255, 0, 0, 0.66)";
+			}
+		}
+        //Announcement JS
+        function announcement() {
+            document.getElementById('coverAnnouncement').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(showAnnouncement, 10);
+        }
+        function showAnnouncement() {
+            document.getElementById('announcement').classList.add('show');
+        }
+        function closeAnnouncement() {
+            document.getElementById('announcement').classList.remove('show');
+            setTimeout(hideCover, 500);
+        }
+        function hideCover() {
+            document.getElementById('coverAnnouncement').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('coverAnnouncement')) {
+                event.stopPropagation();
+            }
+        }
+        function announcement2() {
+            document.getElementById('coverAnnouncement2').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(showAnnouncement2, 10);
+        }
+        function showAnnouncement2() {
+            document.getElementById('announcement2').classList.add('show');
+        }
+        function closeAnnouncement2() {
+            document.getElementById('announcement2').classList.remove('show');
+            setTimeout(hideCover2, 500);
+        }
+        function hideCover2() {
+            document.getElementById('coverAnnouncement2').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('coverAnnouncement2')) {
+                event.stopPropagation();
+            }
+        }
+        //Redirection
+        function login() {
+            window.location.href = "login.html";
+        }
+    </script>
+</html>

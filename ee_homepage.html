@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="author" content="Kathleen Ayo">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <title>Home</title>
+    </head>
+
+    <body>
+        <!-- Navbar with all the pages/buttons for easy navigation. -->
+        <nav> 
+            <ul>
+                <li class="navButton"><a href="ee_homepage.html" onclick="showPage('home')">Home</a></li>
+                <li class="navButton"><a href="ee_about.html" onclick="showPage('about')">About</a></li>
+                <li class="navButton"><a href="ee_ways.html" onclick="showPage('apply')">Ways to Apply</a></li>
+                <li class="navButton"><a href="ee_signup.html" onclick="showPage('sign')">Sign Up</a></li>
+                <li class="navButton"><a href="ee_login.html" onclick="showPage('log')">Log In</a></li>
+            </ul>
+
+            <img src="leaf logo_black.png" alt="" class="logo">
+            <h1 class="webtitle">Environmental Engineering</h1>
+        </nav>
+
+        <!-- General homepage container -->
+        <div class="chokcontainer">
+            <p class="text">Environmental Engineering:<br>
+            Applying engineering principles to to environmental problems</p>
+
+            <p class="texttwo">Environmental engineering is one way to contribue to protecting our planet's natural resources. Click the button below to learn more!</p>
+
+            <button class="btn"><a href="ee_about.html" target="_blank">Learn More &#8594;</a></button>
+        </div>
+    </body>
+
+    <style>
+
+        @import url(https://db.onlinewebfonts.com/c/b158925a1d762313849f2482a415369d?family=Eina03-SemiBold);
+        @font-face {
+            font-family: "Eina03-SemiBold";
+            src: url("https://db.onlinewebfonts.com/t/b158925a1d762313849f2482a415369d.eot");
+            src: url("https://db.onlinewebfonts.com/t/b158925a1d762313849f2482a415369d.eot?#iefix")format("embedded-opentype"),
+            url("https://db.onlinewebfonts.com/t/b158925a1d762313849f2482a415369d.woff2")format("woff2"),
+            url("https://db.onlinewebfonts.com/t/b158925a1d762313849f2482a415369d.woff")format("woff"),
+            url("https://db.onlinewebfonts.com/t/b158925a1d762313849f2482a415369d.ttf")format("truetype"),
+            url("https://db.onlinewebfonts.com/t/b158925a1d762313849f2482a415369d.svg#Eina03-SemiBold")format("svg");
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('ee_bg1.png'); 
+            background-size: cover; 
+            background-position: fixed; 
+            background-repeat: no-repeat;
+        }
+        nav{
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 8.2vh;
+            background: #83A7CB;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 1.06vw;
+        }
+
+        .webtitle {
+            font-size: 1.5vw;
+            font-family: 'Inter';
+            font-weight: bold;
+            margin: 0;
+            position: absolute; 
+            left: 4.4vw;
+            margin-top: 0.4vh;
+        }
+
+        .logo{
+            height: 8.2vh;
+            position: absolute;
+            left: 0.1vw;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex; 
+        }
+
+        li {
+            margin-top: 4.1vh;
+            margin-left: 1.06vw;
+            margin-right: 1.4vw;
+            font-size: 0.8vw;
+        }
+
+        a {
+            text-decoration: none;
+            color: black; 
+            font-family: 'Inter', sans-serif;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        /* Homepage container css */
+        .chokcontainer {
+            border-radius: 0.4vw;
+            background-color: rgba(194, 214, 203, 0.6);
+            z-index: 10;
+            padding: 2vw; 
+            position: fixed;
+            width: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        p {
+            font-family: 'Inter';
+        }
+
+        .text {
+            font-size: 2.4vw;
+            text-align: center;
+            font-weight: bold;
+            font-family: "Eina03-SemiBold";
+        }
+
+        .texttwo {
+            font-size: 1.2vw;
+            margin-bottom: 2vh;
+            margin-top: 1vh; 
+        }
+
+        .btn {
+            background-color: #739072; 
+            color: white; 
+            border: none;
+            padding: 2vh 4vw;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.03vw;
+            font-family: "Eina03-SemiBold";
+            margin: 1vh 1vw;
+            cursor: pointer;
+            border-radius: 0.4vw;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #5C745B; 
+            box-shadow: 0 2vh 3vw rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+    </style>
+</html>
